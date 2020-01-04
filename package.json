@@ -1,0 +1,63 @@
+{
+  "name": "utom.is",
+  "version": "0.0.0",
+  "private": true,
+  "husky": {
+    "hooks": {
+      "pre-commit": "run-p check:*",
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
+    }
+  },
+  "scripts": {
+    "start": "node ./start",
+    "start:dev": "ts-node ./start",
+    "test": "jest",
+    "check:eslint": "eslint --ext=js,ts .",
+    "check:prettier": "prettier --check '**/*.{js,jsx,ts,tsx,md,json,yml,css,html}'",
+    "check:tsc": "tsc --noEmit",
+    "build-tsc": "tsc --build",
+    "remove-dist": "ts-node support/remove-dist.ts",
+    "copy-static": "ts-node support/copy-static.ts",
+    "install-prod-deps": "ts-node support/install-dependencies.ts",
+    "build": "run-s remove-dist build-tsc copy-static install-prod-deps"
+  },
+  "dependencies": {
+    "config": "^3.2.4",
+    "cookie-parser": "~1.4.4",
+    "debug": "~2.6.9",
+    "express": "~4.16.1",
+    "express-winston": "^4.0.2",
+    "http-errors": "~1.6.3",
+    "jade": "~1.11.0",
+    "winston": "^3.2.1"
+  },
+  "devDependencies": {
+    "@commitlint/cli": "^8.3.4",
+    "@commitlint/config-conventional": "^8.3.4",
+    "@types/config": "0.0.36",
+    "@types/cookie-parser": "^1.4.2",
+    "@types/debug": "^4.1.5",
+    "@types/express": "^4.17.2",
+    "@types/fs-extra": "^8.0.1",
+    "@types/http-errors": "^1.6.3",
+    "@types/jest": "^24.0.25",
+    "@types/morgan": "^1.7.37",
+    "@types/node": "^13.1.4",
+    "@types/redis-mock": "^0.17.0",
+    "@types/supertest": "^2.0.8",
+    "@typescript-eslint/eslint-plugin": "^2.14.0",
+    "@typescript-eslint/parser": "^2.14.0",
+    "eslint": "^6.8.0",
+    "eslint-config-prettier": "^6.9.0",
+    "fs-extra": "^8.1.0",
+    "husky": "^3.1.0",
+    "jest": "^24.9.0",
+    "npm-run-all": "^4.1.5",
+    "prettier": "^1.19.1",
+    "redis-mock": "^0.47.0",
+    "supertest": "^4.0.2",
+    "ts-jest": "^24.2.0",
+    "ts-node": "^8.5.4",
+    "typescript": "^3.7.4"
+  }
+}
