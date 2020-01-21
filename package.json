@@ -41,7 +41,7 @@
     "express-winston": "^4.0.2",
     "http-errors": "~1.7.3",
     "got": "^10.2.2",
-    "jade": "~1.11.0",
+    "http-errors": "~1.7.3",
     "winston": "^3.2.1"
   },
   "devDependencies": {

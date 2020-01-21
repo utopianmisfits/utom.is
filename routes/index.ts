@@ -3,7 +3,7 @@ const router = Router();
 
 /* GET home page. */
 router.get("/", (_req, res) => {
-  res.render("index", { title: "Express" });
+  res.json({ msg: "Hello World" });
 });
 
 export default router;
