@@ -12,6 +12,14 @@ module.exports = {
       max: 100,
     },
   },
+  database: {
+    host: process.env.DATABASE_HOST || "127.0.0.1",
+    database: process.env.DATABASE_NAME || "utomis",
+    username: process.env.DATABASE_USERNAME || "user",
+    password: process.env.DATABASE_PASSWORD || "user",
+    dialect: process.env.DATABASE_DIALECT || "sqlite",
+    dialectOptions: {},
+  },
   log: {
     level: "info",
     meta: false,
