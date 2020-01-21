@@ -6,6 +6,11 @@ module.exports = {
   },
   server: {
     port: 3000,
+    // https://github.com/nfriedly/express-rate-limit
+    rateLimit: {
+      windowMs: 15 * 60 * 1000,
+      max: 100,
+    },
   },
   log: {
     level: "info",
