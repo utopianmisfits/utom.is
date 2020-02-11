@@ -9,7 +9,6 @@ exec(
     --only=production \
     --no-audit \
     --no-bin-links \
-    --ignore-scripts \
     --no-optional`,
   { cwd: folders.dist },
   (err, stdout, stderr) => {
