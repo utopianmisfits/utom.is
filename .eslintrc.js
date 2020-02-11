@@ -4,6 +4,7 @@ module.exports = {
     node: true,
     jest: true,
   },
+  plugins: ["@typescript-eslint", "security"],
   extends: [
     "eslint:recommended",
     "plugin:security/recommended",
