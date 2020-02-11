@@ -5,7 +5,7 @@ module.exports = {
     name: "utom.is",
   },
   server: {
-    port: 3000,
+    port: 4000,
     // https://github.com/nfriedly/express-rate-limit
     rateLimit: {
       windowMs: 15 * 60 * 1000,
