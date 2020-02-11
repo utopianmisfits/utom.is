@@ -1,0 +1,36 @@
+version: "3"
+
+services:
+  web:
+    container_name: utom
+    build: .
+    ports:
+      - "4000:4000"
+    environment:
+      DATABASE_HOST: postgres
+      DATABASE_NAME: utomis
+      DATABASE_USER: user
+      DATABASE_PASSWORD: password
+      DATABASE_DIALECT: postgres
+    links:
+      - database
+    depends_on:
+      - database
+    networks:
+      - utomis-network
+
+  database:
+    image: postgres:12-alpine
+    container_name: postgres
+    environment:
+      POSTGRES_USER: user
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: utomis
+    ports:
+      - "5432:5432"
+    networks:
+      - utomis-network
+
+networks:
+  utomis-network:
+    driver: "bridge"
