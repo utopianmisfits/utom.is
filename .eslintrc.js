@@ -22,7 +22,15 @@ module.exports = {
     ecmaVersion: 2018,
     sourceType: "module",
   },
-  plugins: ["@typescript-eslint", "security"],
   rules: {},
   ignorePatterns: ["dist"],
+  overrides: [
+    {
+      files: ["{db,support,config}/**/*.js"],
+      rules: {
+        "@typescript-eslint/explicit-function-return-type": "off",
+        "@typescript-eslint/no-var-requires": "off",
+      },
+    },
+  ],
 };

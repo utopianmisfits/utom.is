@@ -4,6 +4,7 @@ import path from "path";
 const dist = process.env.DIST_FOLDER || "dist";
 
 export default {
+  config: path.resolve(__dirname, `../config`),
   dist: path.resolve(__dirname, `../${dist}`),
   views: path.resolve(__dirname, "../views"),
   pkg: path.resolve(__dirname, "../package.json"),

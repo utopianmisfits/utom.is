@@ -4,6 +4,7 @@
 
 import config from "config";
 import app from "./app";
+import sequelize from "./db";
 import debugCt from "debug";
 import http from "http";
 import { HttpError } from "http-errors";
@@ -84,4 +85,4 @@ function onListening(): void {
 server.on("error", onError);
 server.on("listening", onListening);
 
-server.listen(port);
+sequelize.sync().then(() => server.listen(port));
