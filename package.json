@@ -35,7 +35,7 @@
     "db:seed": "sequelize-cli db:seed:all"
   },
   "dependencies": {
-    "argon2": "^0.25.1",
+    "argon2": "^0.26.0",
     "config": "^3.2.5",
     "cookie-parser": "~1.4.4",
     "debug": "~4.1.1",
