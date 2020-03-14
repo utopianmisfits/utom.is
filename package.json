@@ -2,29 +2,12 @@
   "name": "utom.is",
   "version": "0.0.0",
   "private": true,
-  "husky": {
-    "hooks": {
-      "pre-commit": "lint-staged",
-      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
-    }
-  },
-  "lint-staged": {
-    "*.{js,jsx,ts,tsx,md,json,yml,css,html}": [
-      "prettier --write",
-      "git add"
-    ],
-    "*.{ts,js}": [
-      "eslint --fix",
-      "jest --bail --findRelatedTests",
-      "git add"
-    ]
-  },
   "scripts": {
     "start": "node ./start",
     "start:dev": "ts-node ./start",
     "test": "jest",
     "check:eslint": "eslint --ext=js,ts .",
-    "check:prettier": "prettier --check '**/*.{js,jsx,ts,tsx,md,json,yml,css,html}'",
+    "check:prettier": "prettier --ignore-path '.gitignore' --check '**/*.{js,jsx,ts,tsx,md,json,yml,css,html}'",
     "check:tsc": "tsc --noEmit",
     "build-tsc": "tsc --build",
     "remove-dist": "ts-node support/remove-dist.ts",
@@ -86,5 +69,101 @@
     "ts-jest": "^25.2.1",
     "ts-node": "^8.6.2",
     "typescript": "^3.8.3"
+  },
+  "eslintConfig": {
+    "env": {
+      "es6": true,
+      "node": true,
+      "jest": true
+    },
+    "plugins": [
+      "@typescript-eslint",
+      "security"
+    ],
+    "extends": [
+      "eslint:recommended",
+      "plugin:security/recommended",
+      "plugin:@typescript-eslint/eslint-recommended",
+      "plugin:@typescript-eslint/recommended",
+      "prettier",
+      "prettier/@typescript-eslint"
+    ],
+    "globals": {
+      "Atomics": "readonly",
+      "SharedArrayBuffer": "readonly"
+    },
+    "parser": "@typescript-eslint/parser",
+    "parserOptions": {
+      "ecmaVersion": 2018,
+      "sourceType": "module"
+    },
+    "rules": {},
+    "ignorePatterns": [
+      "dist"
+    ],
+    "overrides": [
+      {
+        "files": [
+          "{db,support,config}/**/*.js"
+        ],
+        "rules": {
+          "@typescript-eslint/explicit-function-return-type": "off",
+          "@typescript-eslint/no-var-requires": "off"
+        }
+      }
+    ]
+  },
+  "prettier": {
+    "trailingComma": "all"
+  },
+  "commitlint": {
+    "extends": [
+      "@commitlint/config-conventional"
+    ],
+    "rules": {
+      "header-max-length": [
+        0,
+        "always",
+        50
+      ],
+      "body-max-line-length": [
+        0,
+        "always",
+        72
+      ],
+      "footer-max-line-length": [
+        0,
+        "always",
+        72
+      ]
+    }
+  },
+  "lint-staged": {
+    "*.{js,jsx,ts,tsx,md,json,yml,css,html}": [
+      "prettier --write",
+      "git add"
+    ],
+    "*.{ts,js}": [
+      "eslint --fix",
+      "jest --bail --findRelatedTests",
+      "git add"
+    ]
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged",
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
+    }
+  },
+  "jest": {
+    "preset": "ts-jest",
+    "testEnvironment": "node",
+    "testPathIgnorePatterns": [
+      "<rootDir>/config",
+      "<rootDir>/dist"
+    ],
+    "setupFiles": [
+      "<rootDir>/support/setup-jest.ts"
+    ]
   }
 }
